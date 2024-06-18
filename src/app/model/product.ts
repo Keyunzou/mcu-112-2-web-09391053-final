@@ -9,6 +9,8 @@ export class Product {
 
   imgUrl!: string;
 
+  authors!: string[];
+
   company!: string;
 
   price!: number;
