@@ -2,10 +2,14 @@ import { AsyncPipe, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { IOrderDetailForm } from '../interface/order-detail-form.interface';
 import { IOrderForm } from '../interface/order-form.interface';
+import { Order } from '../model/order';
+import { OrderDetail } from '../model/order-detail';
 import { Product } from '../model/product';
+import { OrderService } from '../service/order.service';
 import { ShoppingCartService } from '../service/shopping-cart.service';
 
 @Component({
@@ -16,7 +20,11 @@ import { ShoppingCartService } from '../service/shopping-cart.service';
   styleUrl: './shopping-cart-page.component.css',
 })
 export class ShoppingCartPageComponent implements OnInit {
+  private readonly router = inject(Router);
+
   private readonly shoppingCartService = inject(ShoppingCartService);
+
+  private readonly orderService = inject(OrderService);
 
   readonly form = new FormGroup<IOrderForm>({
     name: new FormControl<string | undefined>(undefined, { nonNullable: true, validators: [Validators.required.bind(this)] }),
@@ -42,6 +50,15 @@ export class ShoppingCartPageComponent implements OnInit {
   }
 
   totalPrice = 0;
+
+  get formData(): Order {
+    return new Order({
+      name: this.name.value,
+      address: this.address.value,
+      telephone: this.telephone.value,
+      details: this.details.value.map((item) => new OrderDetail(item)),
+    });
+  }
 
   private readonly destroyRef = inject(DestroyRef);
 
@@ -79,5 +96,12 @@ export class ShoppingCartPageComponent implements OnInit {
   onDelete(index: number, id: number | undefined): void {
     this.details.removeAt(index);
     this.shoppingCartService.deleteProduct(id!);
+  }
+
+  onSave(): void {
+    this.orderService.add(this.formData).subscribe(() => {
+      this.shoppingCartService.clear();
+      this.router.navigate(['/']);
+    });
   }
 }

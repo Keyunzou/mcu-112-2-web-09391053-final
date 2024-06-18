@@ -24,4 +24,8 @@ export class ShoppingCartService {
       this.data.splice(index, 1);
     }
   }
+
+  clear(): void {
+    this.data = [];
+  }
 }
