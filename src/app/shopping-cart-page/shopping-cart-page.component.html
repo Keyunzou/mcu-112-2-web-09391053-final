@@ -24,7 +24,7 @@
           <input type="number" formControlName="count" />
         </div>
         <div class="delete">
-          <button type="button">刪除</button>
+          <button type="button" (click)="onDelete(index, control.value.id)">刪除</button>
         </div>
       </ng-container>
     </div>

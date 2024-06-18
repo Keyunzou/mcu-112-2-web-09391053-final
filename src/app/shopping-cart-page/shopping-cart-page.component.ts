@@ -41,4 +41,9 @@ export class ShoppingCartPageComponent implements OnInit {
       this.details.push(control);
     }
   }
+
+  onDelete(index: number, id: number | undefined): void {
+    this.details.removeAt(index);
+    this.shoppingCartService.deleteProduct(id!);
+  }
 }
