@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, numberAttribute } from '@angular/core';
 import { Product } from '../model/product';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { ProductCardComponent } from '../product-card/product-card.component';
@@ -13,6 +13,17 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 export class ProductCardListComponent {
   @Input({ required: true })
   products!: Product[] | null;
+
+  @Input({ required: true, transform: numberAttribute })
+  pageSize!: number;
+
+  @Input({ required: true, transform: numberAttribute })
+  pageIndex!: number;
+  @Output()
+  pageIndexChange = new EventEmitter<number>();
+
+  @Input({ required: true, transform: numberAttribute })
+  totalCount!: number;
 
   @HostBinding('class')
   class = 'product-card-list';

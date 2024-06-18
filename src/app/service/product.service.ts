@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable, map, mergeMap, toArray } from 'rxjs';
 import { Product } from '../model/product';
 
 @Injectable({
@@ -11,7 +11,17 @@ export class ProductService {
 
   private readonly httpClient = inject(HttpClient);
 
-  getList(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this._url);
+  getList(pageIndex: number, pageSize: number): Observable<Product[]> {
+    const query: { [key: string]: number | boolean } = { _page: pageIndex, _limit: pageSize };
+    const option = { params: new HttpParams({ fromObject: query }) };
+    return this.httpClient.get<Product[]>(this._url, option).pipe(
+      mergeMap((products) => products),
+      map((product) => new Product(product)),
+      toArray()
+    );
+  }
+
+  getCount(): Observable<number> {
+    return this.httpClient.get<Product[]>(this._url).pipe(map((products) => products.length));
   }
 }

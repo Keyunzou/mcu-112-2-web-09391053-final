@@ -1,1 +1,6 @@
-<app-product-card-list [products]="products$ | async"></app-product-card-list>
+<app-product-card-list
+  [products]="products$ | async"
+  [(pageIndex)]="pageIndex"
+  [pageSize]="pageSize"
+  [totalCount]="productCount$ | async"
+/>

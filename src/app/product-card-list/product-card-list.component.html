@@ -3,4 +3,9 @@
   <app-product-card [product]="product"></app-product-card>
   } }
 </div>
-<app-pagination pageIndex="1" pageSize="3" totalCount="5"></app-pagination>
+<app-pagination
+  [pageIndex]="pageIndex"
+  [pageSize]="pageSize"
+  [totalCount]="totalCount"
+  (pageIndexChange)="pageIndexChange.emit($event)"
+></app-pagination>
