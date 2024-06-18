@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  padding: 10px;
+  border: solid 1px #999;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-size: 1.2em;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  text-align: end;
+}
+
+.button button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
