@@ -11,6 +11,7 @@
       ],
       "company": "博碩文化",
       "price": 1580,
+      "hasDiscount": true,
       "isShow": true
     },
     {
@@ -24,6 +25,7 @@
       ],
       "company": "博碩文化",
       "price": 1580,
+      "hasDiscount": false,
       "isShow": true
     },
     {
@@ -37,6 +39,7 @@
       ],
       "company": "博碩文化",
       "price": 1580,
+      "hasDiscount": false,
       "isShow": true
     },
     {
@@ -50,6 +53,7 @@
       ],
       "company": "博碩文化",
       "price": 1580,
+      "hasDiscount": false,
       "isShow": true
     },
     {
@@ -63,6 +67,7 @@
       ],
       "company": "博碩文化",
       "price": 1580,
+      "hasDiscount": false,
       "isShow": true
     },
     {
@@ -76,6 +81,7 @@
       ],
       "company": "博碩文化",
       "price": 1580,
+      "hasDiscount": false,
       "isShow": true
     },
     {
@@ -89,6 +95,7 @@
       ],
       "company": "博碩文化",
       "price": 1580,
+      "hasDiscount": false,
       "isShow": true
     }
   ],

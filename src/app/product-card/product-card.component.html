@@ -1,5 +1,5 @@
 <img src="https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img" />
-<strong>{{ product.name }}</strong>
+<strong [class.discount]="product.hasDiscount">{{ product.name }}</strong>
 <div class="authors">
   <span *ngFor="let author of product.authors; let last = last">
     <span>{{ author }}</span>
