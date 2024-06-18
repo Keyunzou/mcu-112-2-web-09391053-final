@@ -1,9 +1,6 @@
 <div class="container">
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
+  @for (product of products; track $index) { @if (product.isShow) {
+  <app-product-card [product]="product"></app-product-card>
+  } }
 </div>
 <app-pagination pageIndex="1" pageSize="3" totalCount="5"></app-pagination>

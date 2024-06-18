@@ -1,4 +1,5 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
+import { Product } from '../model/product';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { ProductCardComponent } from '../product-card/product-card.component';
 
@@ -10,6 +11,9 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   styleUrl: './product-card-list.component.css',
 })
 export class ProductCardListComponent {
+  @Input({ required: true })
+  products!: Product[];
+
   @HostBinding('class')
   class = 'product-card-list';
 }
