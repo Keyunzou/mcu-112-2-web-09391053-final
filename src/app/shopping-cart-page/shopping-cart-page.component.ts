@@ -1,6 +1,8 @@
-import { NgFor, NgIf } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { AsyncPipe, CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { filter, map } from 'rxjs';
 import { IOrderDetailForm } from '../interface/order-detail-form.interface';
 import { IOrderForm } from '../interface/order-form.interface';
 import { Product } from '../model/product';
@@ -9,7 +11,7 @@ import { ShoppingCartService } from '../service/shopping-cart.service';
 @Component({
   selector: 'app-shopping-cart-page',
   standalone: true,
-  imports: [NgIf, NgFor, ReactiveFormsModule],
+  imports: [NgIf, NgFor, CurrencyPipe, AsyncPipe, ReactiveFormsModule],
   templateUrl: './shopping-cart-page.component.html',
   styleUrl: './shopping-cart-page.component.css',
 })
@@ -39,7 +41,18 @@ export class ShoppingCartPageComponent implements OnInit {
     return this.form.get('details') as FormArray<FormGroup<IOrderDetailForm>>;
   }
 
+  totalPrice = 0;
+
+  private readonly destroyRef = inject(DestroyRef);
+
   ngOnInit(): void {
+    this.details.valueChanges
+      .pipe(
+        map((items) => (items.length === 0 ? 0 : items.reduce((total, item) => total + (item.price || 0), 0))),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe((totalPrice) => (this.totalPrice = totalPrice));
+
     this.setOrderDetail();
   }
 
@@ -49,7 +62,16 @@ export class ShoppingCartPageComponent implements OnInit {
         id: new FormControl<number>(item.id, { nonNullable: true }),
         product: new FormControl<Product>(item.product, { nonNullable: true }),
         count: new FormControl<number>(item.count, { nonNullable: true }),
+        price: new FormControl<number>(item.product.price * item.count, { nonNullable: true }),
       });
+      control
+        .get('count')!
+        .valueChanges.pipe(
+          filter((value) => value !== undefined),
+          map((value) => value * item.product.price),
+          takeUntilDestroyed(this.destroyRef)
+        )
+        .subscribe((price) => control.get('price')!.setValue(price, { emitEvent: false }));
       this.details.push(control);
     }
   }

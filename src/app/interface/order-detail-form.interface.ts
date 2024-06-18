@@ -8,4 +8,6 @@ export interface IOrderDetailForm {
   product: FormControl<Product>;
 
   count: FormControl<number>;
+
+  price: FormControl<number>;
 }
