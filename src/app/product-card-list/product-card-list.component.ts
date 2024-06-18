@@ -12,7 +12,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 })
 export class ProductCardListComponent {
   @Input({ required: true })
-  products!: Product[];
+  products!: Product[] | null;
 
   @HostBinding('class')
   class = 'product-card-list';
