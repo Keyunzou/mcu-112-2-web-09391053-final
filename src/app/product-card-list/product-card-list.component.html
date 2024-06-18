@@ -1,6 +1,6 @@
 <div class="container">
   @for (product of products; track $index) { @if (product.isShow) {
-  <app-product-card [product]="product"></app-product-card>
+  <app-product-card [product]="product" (addTo)="addTo.emit(product)"></app-product-card>
   } }
 </div>
 <app-pagination

@@ -4,6 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BehaviorSubject, combineLatest, switchMap } from 'rxjs';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
 import { ProductService } from '../service/product.service';
+import { ShoppingCartService } from '../service/shopping-cart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -14,6 +15,8 @@ import { ProductService } from '../service/product.service';
 })
 export class ProductPageComponent {
   private readonly productService = inject(ProductService);
+
+  readonly shoppingCartService = inject(ShoppingCartService);
 
   pageSize = 5;
 

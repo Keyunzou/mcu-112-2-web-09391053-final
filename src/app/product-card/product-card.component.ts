@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { Product } from '../model/product';
 
 @Component({
@@ -12,6 +12,9 @@ import { Product } from '../model/product';
 export class ProductCardComponent {
   @Input({ required: true })
   product!: Product;
+
+  @Output()
+  addTo = new EventEmitter<void>();
 
   @HostBinding('class')
   class = 'product-card';

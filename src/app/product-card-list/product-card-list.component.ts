@@ -25,6 +25,9 @@ export class ProductCardListComponent {
   @Input({ required: true, transform: numberAttribute })
   totalCount!: number;
 
+  @Output()
+  addTo = new EventEmitter<Product>();
+
   @HostBinding('class')
   class = 'product-card-list';
 }
