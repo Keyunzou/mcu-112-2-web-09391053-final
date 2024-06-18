@@ -11,8 +11,9 @@ export class ProductService {
 
   private readonly httpClient = inject(HttpClient);
 
-  getList(pageIndex: number, pageSize: number): Observable<Product[]> {
-    const query: { [key: string]: number | boolean } = { _page: pageIndex, _limit: pageSize };
+  getList(name: string | undefined, pageIndex: number, pageSize: number): Observable<Product[]> {
+    const query: { [key: string]: number | string } = { _page: pageIndex, _limit: pageSize };
+    if (name) query['name'] = name;
     const option = { params: new HttpParams({ fromObject: query }) };
     return this.httpClient.get<Product[]>(this._url, option).pipe(
       mergeMap((products) => products),
@@ -21,7 +22,8 @@ export class ProductService {
     );
   }
 
-  getCount(): Observable<number> {
-    return this.httpClient.get<Product[]>(this._url).pipe(map((products) => products.length));
+  getCount(name?: string): Observable<number> {
+    const option = !name ? {} : { params: new HttpParams().set('name', name) };
+    return this.httpClient.get<Product[]>(this._url, option).pipe(map((products) => products.length));
   }
 }

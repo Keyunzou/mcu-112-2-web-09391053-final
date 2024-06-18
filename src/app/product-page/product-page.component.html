@@ -1,3 +1,7 @@
+<div class="search">
+  <input type="text" placeholder="產品名稱查詢" [formControl]="formControl" />
+  <button type="button" (click)="condition = formControl.value">查詢</button>
+</div>
 <app-product-card-list
   [products]="products$ | async"
   [(pageIndex)]="pageIndex"

@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "name": "A 產品 ",
+      "name": "A 產品",
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "company": "博碩文化",
       "price": 1580,
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "name": "B 產品 ",
+      "name": "B 產品",
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "company": "博碩文化",
       "price": 1580,
@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "name": "C 產品 ",
+      "name": "C 產品",
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "company": "博碩文化",
       "price": 1580,
@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "name": "D 產品 ",
+      "name": "D 產品",
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "company": "博碩文化",
       "price": 1580,
@@ -34,7 +34,7 @@
     },
     {
       "id": 5,
-      "name": "E 產品 ",
+      "name": "E 產品",
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "company": "博碩文化",
       "price": 1580,
@@ -42,7 +42,7 @@
     },
     {
       "id": 6,
-      "name": "F 產品 ",
+      "name": "F 產品",
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "company": "博碩文化",
       "price": 1580,
@@ -50,7 +50,7 @@
     },
     {
       "id": 7,
-      "name": "G 產品 ",
+      "name": "G 產品",
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "company": "博碩文化",
       "price": 1580,
