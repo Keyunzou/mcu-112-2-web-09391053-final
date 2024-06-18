@@ -104,3 +104,13 @@ div.delete button {
   color: #005cbb;
   border: 1px solid #005cbb;
 }
+
+.tool-bar button:disabled {
+  color: #999;
+  border: 1px solid #999;
+}
+
+span.error-message {
+  color: #ba1a1a;
+  font-size: 16px;
+}
