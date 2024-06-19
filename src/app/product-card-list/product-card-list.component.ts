@@ -22,7 +22,6 @@ export class ProductCardListComponent {
 
   @Input({ required: true, transform: numberAttribute })
   pageIndex = 1;
-
   @Output()
   pageIndexChange = new EventEmitter<number>();
 
