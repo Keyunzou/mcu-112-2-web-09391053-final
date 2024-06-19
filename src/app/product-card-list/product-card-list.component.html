@@ -1,7 +1,18 @@
 <div class="container">
   @for (product of products; track $index) { @if (product.isShow) {
-  <app-product-card [product]="product" (addTo)="addTo.emit(product)"></app-product-card>
-  } }
+  <app-product-card
+    [product]="product"
+    [productName]="product.name"
+    [authors]="product.authors"
+    [company]="product.company"
+    [imgUrl]="product.imgUrl"
+    [price]="product.price"
+    (addTo)="addTo.emit(product)"
+    (view)="view.emit(product)"
+  ></app-product-card>
+  } }@empty {
+  <div class="data-empty">無產品資料</div>
+  }
 </div>
 <app-pagination
   [pageIndex]="pageIndex"

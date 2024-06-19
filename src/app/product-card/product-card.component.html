@@ -11,5 +11,8 @@
   <div>{{ product.price | currency }}</div>
 </div>
 <div class="button">
-  <button type="button" (click)="addTo.emit()">加入購物車</button>
+  <button type="button" (click)="view.emit()">明細</button>
+  <span>
+    <button type="button" class="addTo" (click)="addTo.emit()">加入購物車</button>
+  </span>
 </div>

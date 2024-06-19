@@ -11,7 +11,8 @@ strong.discount {
   color: red;
 }
 
-.content {
+div.content,
+div.button {
   display: flex;
   justify-content: space-between;
 }
@@ -19,8 +20,14 @@ strong.discount {
 .button {
   text-align: end;
 }
+div.button button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
-.button button {
+button.addTo {
   padding: 10px 20px;
   border: none;
   border-radius: 20px;

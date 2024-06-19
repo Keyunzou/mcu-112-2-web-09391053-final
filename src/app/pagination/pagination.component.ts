@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, EventEmitter, Input, Output, numberAttribute } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, numberAttribute } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output, numberAttribute } from '@angula
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css',
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnChanges {
   @Input({ required: true, transform: numberAttribute })
   totalCount = 0;
 

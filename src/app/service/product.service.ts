@@ -11,6 +11,10 @@ export class ProductService {
 
   private readonly httpClient = inject(HttpClient);
 
+  getById(productId: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${this._url}/${productId}`);
+  }
+
   getList(name: string | undefined, pageIndex: number, pageSize: number): Observable<Product[]> {
     const query: { [key: string]: number | string } = { _page: pageIndex, _limit: pageSize };
     if (name) query['name'] = name;

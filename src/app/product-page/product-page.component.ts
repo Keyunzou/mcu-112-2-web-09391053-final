@@ -1,7 +1,9 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BehaviorSubject, combineLatest, switchMap } from 'rxjs';
+import { Product } from '../model/product';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
 import { ProductService } from '../service/product.service';
 import { ShoppingCartService } from '../service/shopping-cart.service';
@@ -14,6 +16,8 @@ import { ShoppingCartService } from '../service/shopping-cart.service';
   styleUrl: './product-page.component.css',
 })
 export class ProductPageComponent {
+  router = inject(Router);
+
   private readonly productService = inject(ProductService);
 
   readonly shoppingCartService = inject(ShoppingCartService);
@@ -43,4 +47,8 @@ export class ProductPageComponent {
   );
 
   productCount$ = this.condition$.pipe(switchMap(() => this.productService.getCount(this.condition)));
+
+  onView(product: Product): void {
+    this.router.navigate(['product', 'view', product.id]);
+  }
 }

@@ -1,5 +1,5 @@
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, numberAttribute } from '@angular/core';
 import { Product } from '../model/product';
 
 @Component({
@@ -10,12 +10,21 @@ import { Product } from '../model/product';
   styleUrl: './product-card.component.css',
 })
 export class ProductCardComponent {
+  @Input() productName!: string;
+  @Input() authors!: string[];
+  @Input() company!: string;
+  @Input() imgUrl!: string;
+  @Input({ transform: numberAttribute }) price!: number;
+
   @Input({ required: true })
   product!: Product;
 
-  @Output()
-  addTo = new EventEmitter<void>();
-
   @HostBinding('class')
   class = 'product-card';
+
+  @Output()
+  view = new EventEmitter<void>();
+
+  @Output()
+  addTo = new EventEmitter<void>();
 }
