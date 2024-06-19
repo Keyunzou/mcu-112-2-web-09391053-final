@@ -1,8 +1,8 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, EventEmitter, Input, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../model/product';
-import { ProductService } from '../service/product.service';
+import { ShoppingCartService } from '../service/shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -17,13 +17,9 @@ export class ProductDetailPageComponent {
 
   private router = inject(Router);
 
-  private productService = inject(ProductService);
+  readonly shoppingCartService = inject(ShoppingCartService);
 
   onBack(): void {
     this.router.navigate(['products']);
-  }
-
-  addTo(): void {
-    new EventEmitter<void>();
   }
 }

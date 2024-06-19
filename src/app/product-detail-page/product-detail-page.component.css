@@ -46,6 +46,10 @@ div.button button {
 }
 
 button.addTo {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
   background-color: #007bff;
   color: white;
+  cursor: pointer;
 }
