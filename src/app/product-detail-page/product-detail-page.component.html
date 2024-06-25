@@ -18,6 +18,7 @@
   <div>
     <strong>價格</strong>
     <span>{{ product.price | currency }}</span>
+    <span *ngIf="product.hasDiscount" class="discount">特價</span>
   </div>
   <div class="button">
     <button type="button" (click)="onBack()">返回</button>
